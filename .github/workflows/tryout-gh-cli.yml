@@ -1,0 +1,25 @@
+name: Trigger build of base-image
+
+# Configures this workflow to run every time a change is pushed to the branch called `main`.
+on:
+  workflow_dispatch:
+
+# Defines two custom environment variables for the workflow. These are used for the Container registry domain, and a name for the Docker image that this workflow builds.
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+# There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
+jobs:
+  trigger-build-of-base-image:
+    runs-on: ubuntu-latest
+    # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+      # 
+    steps:
+      - name: Trigger build
+        run: "gh api --method POST -H \"Accept: application/vnd.github+json\" -H \"X-GitHub-Api-Version: 2022-11-28\" /repos/fermentatiekast/base-image/actions/workflows/140076487/dispatches -f \"ref=main\""
