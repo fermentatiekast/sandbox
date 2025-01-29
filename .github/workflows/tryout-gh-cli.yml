@@ -14,11 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:
-      contents: read
-      packages: write
-      attestations: write
-      id-token: write
-      # 
+      actions: write
     steps:
       - name: Trigger build
         run: "gh api --method POST -H \"Accept: application/vnd.github+json\" -H \"X-GitHub-Api-Version: 2022-11-28\" /repos/fermentatiekast/base-image/actions/workflows/140076487/dispatches -f \"ref=main\""
