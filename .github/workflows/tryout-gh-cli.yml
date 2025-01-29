@@ -4,10 +4,9 @@ name: Trigger build of base-image
 on:
   workflow_dispatch:
 
-# Defines two custom environment variables for the workflow. These are used for the Container registry domain, and a name for the Docker image that this workflow builds.
+# The GitHub CLI needs acces to the `github.token`
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+    GH_TOKEN: ${{ github.token }}
 
 # There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
 jobs:
