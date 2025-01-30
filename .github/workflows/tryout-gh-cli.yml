@@ -16,4 +16,4 @@ jobs:
     permissions: write-all
     steps:
       - name: Trigger build
-        run: "gh api --method POST -H \"Accept: application/vnd.github+json\" -H \"X-GitHub-Api-Version: 2022-11-28\" /repos/fermentatiekast/base-image/actions/workflows/140076487/dispatches -f \"ref=main\""
+        run: "gh workflow run --repo fermentatiekast/base-image 140076487"
