@@ -12,3 +12,8 @@ python3 -m venv .venv
 This directory should not be versioned!
 
 We can use it to configure your shell for python development.
+
+## Behave
+We will use [behave][behave] as a tool for integration.
+
+[behave]: https://behave.readthedocs.io
